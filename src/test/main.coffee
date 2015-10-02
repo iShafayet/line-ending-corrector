@@ -63,7 +63,6 @@ describe 'LineEndingCorrector', ->
       expect(wasAltered).to.equal(true)
       expect(output).to.equal(expectedOutput)
 
-
     it 'input-output set 2.1', ->
       
       input = 'Line1\nLine2'
@@ -77,16 +76,16 @@ describe 'LineEndingCorrector', ->
       input = 'Line1\r\nLine2'
       expectedOutput = 'Line1\r\nLine2'
       [ wasAltered, output ] = fn input, 'CRLF'
-      expect(wasAltered).to.equal(true)
+      expect(wasAltered).to.equal(false)
       expect(output).to.equal(expectedOutput)
 
-    # it 'input-output set 2.3', ->
+    it 'input-output set 2.3', ->
 
-    #   input = 'Line1\r\nLine2\r\n\r\n\r\nAnotherLine\nAnotherLine\rSomething\n\n'
-    #   expectedOutput = 'Line1\r\r\n\r\nLine2\r\r\n\r\n\r\r\n\r\n\r\r\n\r\nAnotherLine\r\nAnotherLine\r\r\nSomething\r\n\r\n'
-    #   [ wasAltered, output ] = fn input, 'CRLF'
-    #   expect(wasAltered).to.equal(true)
-    #   expect(output).to.equal(expectedOutput)
+      input = 'Line1\r\nLine2\r\n\r\n\r\nAnotherLine\nAnotherLine\rSomething\n\n'
+      expectedOutput = 'Line1\r\nLine2\r\n\r\n\r\nAnotherLine\r\nAnotherLine\r\nSomething\r\n\r\n'
+      [ wasAltered, output ] = fn input, 'CRLF'
+      expect(wasAltered).to.equal(true)
+      expect(output).to.equal(expectedOutput)
 
 
 
