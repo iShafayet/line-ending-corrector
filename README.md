@@ -22,7 +22,7 @@ For using programmatically
 
     [sudo] npm install line-ending-corrector --save-dev
     
-# Using from the command line
+# Usage the command line
 
 To operate on a single file inplace (the file will only be altered if any inconsistent line endings are found)
 
@@ -51,6 +51,17 @@ To use CRLF instead of LF as the desired End Of Line character
 
 
     
+# Programmatic Usage
+
+To require
+
+```coffeescript
+    { LineEndingCorrector } = require 'line-ending-corrector'
+```
+
+```javascript
+    LineEndingCorrector = require('line-ending-corrector').LineEndingCorrector
+```
 
 
 
