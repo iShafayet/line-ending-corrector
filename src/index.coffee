@@ -3,11 +3,6 @@ class LineEndingCorrector
   
   @defualtEolName: 'LF'
 
-  @eolCharacterMap:
-    'CRLF': { string: '\r\n', regex: /\r\n/g }
-    'CR': { string: '\r', regex: /\r(?!\n)/g }
-    'LF': { string: '\n', regex: /\n/g }
-
   @eolNameList: [ 'CRLF', 'CR', 'LF' ]
 
   @__extractOptions: (optionMap)->
@@ -19,20 +14,22 @@ class LineEndingCorrector
     return optionMap
 
   @__correct: (content, desiredEolName)->
-    wasAltered = false
-    desiredEolString = LineEndingCorrector.eolCharacterMap[desiredEolName].string
-    for name in LineEndingCorrector.eolNameList
-      character = LineEndingCorrector.eolCharacterMap[name]
-      continue if desiredEolName is name
-      if -1 < content.indexOf character.string
-        wasAltered = true
-        content = content.replace character.regex, desiredEolString
-    return [ wasAltered, content ]
+    if desiredEolName is 'CRLF'
+      parts = content.split /\r\n|\n|\r/g
+      newContent = parts.join '\r\n'
+      return [ (content isnt newContent), newContent ]
+    else if desiredEolName is 'LF'
+      parts = content.split /\r\n|\n|\r/g
+      newContent = parts.join '\n'
+      return [ (content isnt newContent), newContent ]
+    else if desiredEolName is 'CR'
+      parts = content.split /\r\n|\n|\r/g
+      newContent = parts.join '\r'
+      return [ (content isnt newContent), newContent ]
 
   @correctSync: (content, optionMap)->
     throw new Error "Expected String" if typeof content isnt 'string'
     { eolc } = LineEndingCorrector.__extractOptions optionMap
     return LineEndingCorrector.__correct content, eolc
-
 
 @LineEndingCorrector = LineEndingCorrector
