@@ -53,7 +53,7 @@ To use CRLF instead of LF as the desired End Of Line character
     
 # Programmatic Usage
 
-**To require**
+## To require
 
 CoffeeScript
 ```CoffeeScript
@@ -65,5 +65,25 @@ JavaScript
     LineEndingCorrector = require('line-ending-corrector').LineEndingCorrector
 ```
 
+## Methods
+
+### LineEndingCorrector.correctSync(contents, options)
+returns [ wasAltered, modifiedContents ]
+
+CoffeeScript
+```CoffeeScript
+    contentsOfSomeFile = arbitaryFunctionToLoadFile()
+    [ wasAltered, modifiedContents ] = LineEndingCorrector.correct contentsOfSomeFile
+    if wasAltered
+      arbitaryFunctionToSaveFile modifiedContents
+```
+
+JavaScript
+```JavaScript
+    LineEndingCorrector = require('line-ending-corrector').LineEndingCorrector
+```
+
+
+### LineEndingCorrector.correctStream(contentStream, options)
 
 
