@@ -1,11 +1,13 @@
 
 expect = require('chai').expect
 
+fs = require 'fs'
+
 { LineEndingCorrector } = require './../index.coffee'
 
 describe 'LineEndingCorrector', ->
 
-  describe '# __extractOptions()', ->
+  describe '.__extractOptions()', ->
 
     it 'existance', ->
 
@@ -31,7 +33,7 @@ describe 'LineEndingCorrector', ->
 
       expect(fn { encoding: 'UnknownEncoding' }).to.deep.equal { eolc: 'LF', encoding: 'UnknownEncoding' }    
 
-  describe '# __correct()', ->
+  describe '.__correct()', ->
 
     fn = LineEndingCorrector.__correct
 
@@ -87,6 +89,33 @@ describe 'LineEndingCorrector', ->
       expect(wasAltered).to.equal(true)
       expect(output).to.equal(expectedOutput)
 
+
+  describe '.CorrectedStream class', ->
+
+    CorrectedStream = LineEndingCorrector.CorrectedStream
+
+    it 'existance', ->
+
+      expect(LineEndingCorrector).to.have.property('CorrectedStream').that.is.a('function')
+
+    it 'input-output set 1', (done)->
+
+      inputStream = fs.createReadStream './test/case-1-input', { encoding:'utf8' }
+
+      outputStream = new CorrectedStream inputStream, 'CRLF'
+
+      outputSummary = ''
+
+      outputStream.on 'data', (data)->
+        outputSummary += data
+
+      outputStream.on 'end', ->
+        contents = fs.readFileSync './test/case-1-input', { encoding:'utf8' }
+        [ _, expectedOutput ] = LineEndingCorrector.__correct contents, 'CRLF'
+        expect(outputSummary).to.equal(expectedOutput)
+        done()
+
+      
 
 
 
