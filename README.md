@@ -57,12 +57,12 @@ To use CRLF instead of LF as the desired End Of Line character
 
 CoffeeScript
 ```CoffeeScript
-    { LineEndingCorrector } = require 'line-ending-corrector'
+{ LineEndingCorrector } = require 'line-ending-corrector'
 ```
 
 JavaScript
 ```JavaScript
-    LineEndingCorrector = require('line-ending-corrector').LineEndingCorrector
+LineEndingCorrector = require('line-ending-corrector').LineEndingCorrector
 ```
 
 ## Methods
@@ -72,28 +72,28 @@ returns `{ wasAltered Boolean, modifiedContents String }`
 
 CoffeeScript
 ```CoffeeScript
-    contentsOfSomeFile = arbitaryFunctionToLoadFile()
-    { wasAltered, modifiedContents } = LineEndingCorrector.correctSync contentsOfSomeFile
-    if wasAltered
-      arbitaryFunctionToSaveFile modifiedContents
+contentsOfSomeFile = arbitaryFunctionToLoadFile()
+{ wasAltered, modifiedContents } = LineEndingCorrector.correctSync contentsOfSomeFile
+if wasAltered
+  arbitaryFunctionToSaveFile modifiedContents
 ```
 
 JavaScript
 ```JavaScript
-    contentsOfSomeFile = arbitaryFunctionToLoadFile();
-    res = LineEndingCorrector.correctSync(contentsOfSomeFile);
-    if(res.wasAltered) {
-      arbitaryFunctionToSaveFile(res.modifiedContents);
-    }
+contentsOfSomeFile = arbitaryFunctionToLoadFile();
+res = LineEndingCorrector.correctSync(contentsOfSomeFile);
+if(res.wasAltered) {
+  arbitaryFunctionToSaveFile(res.modifiedContents);
+}
 ```
 
 ES6
 ```JavaScript
-    contentsOfSomeFile = arbitaryFunctionToLoadFile();
-    { wasAltered, modifiedContents } = LineEndingCorrector.correctSync(contentsOfSomeFile);
-    if(wasAltered) {
-      arbitaryFunctionToSaveFile(modifiedContents);
-    }
+contentsOfSomeFile = arbitaryFunctionToLoadFile();
+{ wasAltered, modifiedContents } = LineEndingCorrector.correctSync(contentsOfSomeFile);
+if(wasAltered) {
+  arbitaryFunctionToSaveFile(modifiedContents);
+}
 ```
 
 ### LineEndingCorrector.correctStream(contentStream, options)
@@ -101,10 +101,10 @@ returns `{ wasAltered Boolean, modifiedContentStream ReadableStream }`
 
 CoffeeScript
 ```CoffeeScript
-    contentStream = arbitaryFunctionToLoadFileAsStream()
-    { wasAltered, modifiedContentStream } = LineEndingCorrector.correctStream contentStream
-    if wasAltered
-      arbitaryFunctionToSaveFileFromStream modifiedContents
+contentStream = arbitaryFunctionToLoadFileAsStream()
+{ wasAltered, modifiedContentStream } = LineEndingCorrector.correctStream contentStream
+if wasAltered
+  arbitaryFunctionToSaveFileFromStream modifiedContents
 ```
 
 
@@ -113,11 +113,11 @@ CoffeeScript
 
 CoffeeScript
 ```CoffeeScript
-    content = arbitaryFunctionToLoadFile()
-    LineEndingCorrector.correct content, { eol: 'LF' }, (err, wasAltered, modifiedContent)=>
-      throw err if err
-      if wasAltered
-        arbitaryFunctionToSaveFileFromStream modifiedContent
+content = arbitaryFunctionToLoadFile()
+LineEndingCorrector.correct content, { eol: 'LF' }, (err, wasAltered, modifiedContent)=>
+  throw err if err
+  if wasAltered
+    arbitaryFunctionToSaveFileFromStream modifiedContent
 ```
 
 
