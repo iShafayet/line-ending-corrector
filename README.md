@@ -20,4 +20,29 @@ For using programmatically
 
     [sudo] npm install line-ending-corrector --save-dev
     
+# Using from the command line
+
+To operate on a single file inplace (the file will only be altered if any inconsistent line endings are found)
+
+    line-ending-corrector <filename>
+
+
+To operate on a single file with a diffrent output file name.
+
+    line-ending-corrector <filename> -o <output-filename>
+
+To operate on all the files in the current dirrectory
+
+    line-ending-corrector -d
+    
+To operate on all the files in a directory
+
+    line-ending-corrector -d <directory>
+
+To operate on all the files in a directory and all subdirectories recursively
+
+    line-ending-corrector -d -r <directory>
+    
+
+
 
