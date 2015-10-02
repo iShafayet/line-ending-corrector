@@ -47,7 +47,7 @@ To operate on all the files in a directory and all subdirectories recursively
     
 To use CRLF instead of LF as the desired End Of Line character
 
-    line-ending-corrector <filename> --eol CRLF
+    line-ending-corrector <filename> --eolc CRLF
 
 
     
@@ -114,7 +114,7 @@ if wasAltered
 CoffeeScript
 ```CoffeeScript
 content = arbitaryFunctionToLoadFile()
-LineEndingCorrector.correct content, { eol: 'LF' }, (err, wasAltered, modifiedContent)=>
+LineEndingCorrector.correct content, { eolc: 'LF' }, (err, wasAltered, modifiedContent)=>
   throw err if err
   if wasAltered
     arbitaryFunctionToSaveFileFromStream modifiedContent
@@ -122,7 +122,7 @@ LineEndingCorrector.correct content, { eol: 'LF' }, (err, wasAltered, modifiedCo
 
 ## Options
 
-`eol`
+`eolc`
 Desired End of Line character. can be `CR` (`\r`), `LF`(`\n`) (Default), `CRLF`(`\r\n`)
 
 `encoding`
