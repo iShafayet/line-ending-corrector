@@ -123,7 +123,20 @@ LineEndingCorrector.correct content, { eol: 'LF' }, (err, wasAltered, modifiedCo
 ## Options
 
 `eol`
-Desired End of Line character. can be `CR` (\r), `LF`(\n), `CRLF`(\r\n)
+Desired End of Line character. can be `CR` (`\r`), `LF`(`\n`) (Default), `CRLF`(`\r\n`)
+
+`encoding`
+Any meaningful encoding that nodejs supprots. Default `utf8`. It is advisable to use `utf8` since others are not tested by the devs.
+
+# Gulp
+
+See [gulp-line-ending-corrector](https://github.com/ishafayet/gulp-line-ending-corrector)
+
+# Testing
+
+You need [mocha](https://github.com/mochajs/mocha)
+
+`npm test`
 
 
 
