@@ -109,7 +109,7 @@ if wasAltered
 
 
 ### LineEndingCorrector.correct(content, options, callbackFunction)
-`callbackFunction` is called with (err Error, wasAltered boolean, modifiedContent String)
+`callbackFunction` is called with `(err Error, wasAltered boolean, modifiedContent String)`
 
 CoffeeScript
 ```CoffeeScript
@@ -119,5 +119,14 @@ LineEndingCorrector.correct content, { eol: 'LF' }, (err, wasAltered, modifiedCo
   if wasAltered
     arbitaryFunctionToSaveFileFromStream modifiedContent
 ```
+
+## Options
+
+`eol`
+Desired End of Line character. can be `CR` (\r), `LF`(\n), `CRLF`(\r\n)
+
+
+
+
 
 
