@@ -68,7 +68,7 @@ JavaScript
 ## Methods
 
 ### LineEndingCorrector.correctSync(contents, options)
-returns { wasAltered, modifiedContents }
+returns `{ wasAltered Boolean, modifiedContents String }`
 
 CoffeeScript
 ```CoffeeScript
@@ -97,15 +97,27 @@ ES6
 ```
 
 ### LineEndingCorrector.correctStream(contentStream, options)
-returns { wasAltered boolean, modifiedContentStream ReadableStream }
+returns `{ wasAltered Boolean, modifiedContentStream ReadableStream }`
 
 CoffeeScript
 ```CoffeeScript
     contentStream = arbitaryFunctionToLoadFileAsStream()
-    { wasAltered, modifiedContentStream } = LineEndingCorrector.correct contentStream
+    { wasAltered, modifiedContentStream } = LineEndingCorrector.correctStream contentStream
     if wasAltered
       arbitaryFunctionToSaveFileFromStream modifiedContents
 ```
 
+
+### LineEndingCorrector.correct(content, options, callbackFunction)
+`callbackFunction` is called with (err Error, wasAltered boolean, modifiedContent String)
+
+CoffeeScript
+```CoffeeScript
+    content = arbitaryFunctionToLoadFile()
+    LineEndingCorrector.correct content, { eol: 'LF' }, (err, wasAltered, modifiedContent)=>
+      throw err if err
+      if wasAltered
+        arbitaryFunctionToSaveFileFromStream modifiedContent
+```
 
 
