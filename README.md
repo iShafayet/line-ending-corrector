@@ -68,7 +68,7 @@ JavaScript
 ## Methods
 
 ### LineEndingCorrector.correctSync(contents, options)
-returns [ wasAltered, modifiedContents ]
+returns { wasAltered, modifiedContents }
 
 CoffeeScript
 ```CoffeeScript
@@ -80,7 +80,12 @@ CoffeeScript
 
 JavaScript
 ```JavaScript
-    LineEndingCorrector = require('line-ending-corrector').LineEndingCorrector
+    contentsOfSomeFile = arbitaryFunctionToLoadFile()
+    res = LineEndingCorrector.correct contentsOfSomeFile
+    if(res.wasAltered) {
+      arbitaryFunctionToSaveFile(res.modifiedContents)
+    }
+    
 ```
 
 
