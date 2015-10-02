@@ -73,21 +73,28 @@ returns { wasAltered, modifiedContents }
 CoffeeScript
 ```CoffeeScript
     contentsOfSomeFile = arbitaryFunctionToLoadFile()
-    [ wasAltered, modifiedContents ] = LineEndingCorrector.correct contentsOfSomeFile
+    { wasAltered, modifiedContents } = LineEndingCorrector.correct contentsOfSomeFile
     if wasAltered
       arbitaryFunctionToSaveFile modifiedContents
 ```
 
 JavaScript
 ```JavaScript
-    contentsOfSomeFile = arbitaryFunctionToLoadFile()
-    res = LineEndingCorrector.correct contentsOfSomeFile
+    contentsOfSomeFile = arbitaryFunctionToLoadFile();
+    res = LineEndingCorrector.correct(contentsOfSomeFile);
     if(res.wasAltered) {
-      arbitaryFunctionToSaveFile(res.modifiedContents)
+      arbitaryFunctionToSaveFile(res.modifiedContents);
     }
-    
 ```
 
+ES6
+```JavaScript
+    contentsOfSomeFile = arbitaryFunctionToLoadFile();
+    { wasAltered, modifiedContents } = LineEndingCorrector.correct(contentsOfSomeFile);
+    if(wasAltered) {
+      arbitaryFunctionToSaveFile(modifiedContents);
+    }
+```
 
 ### LineEndingCorrector.correctStream(contentStream, options)
 
