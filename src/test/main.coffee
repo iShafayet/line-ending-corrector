@@ -90,19 +90,19 @@ describe 'LineEndingCorrector', ->
       expect(output).to.equal(expectedOutput)
 
 
-  describe '.CorrectedStream class', ->
+  describe '.__CorrectedStream class', ->
 
-    CorrectedStream = LineEndingCorrector.CorrectedStream
+    __CorrectedStream = LineEndingCorrector.__CorrectedStream
 
     it 'existance', ->
 
-      expect(LineEndingCorrector).to.have.property('CorrectedStream').that.is.a('function')
+      expect(LineEndingCorrector).to.have.property('__CorrectedStream').that.is.a('function')
 
     it 'input-output set 1', (done)->
 
       inputStream = fs.createReadStream './test/case-1-input', { encoding:'utf8' }
 
-      outputStream = new CorrectedStream inputStream, 'CRLF'
+      outputStream = new __CorrectedStream inputStream, 'CRLF'
 
       outputSummary = ''
 

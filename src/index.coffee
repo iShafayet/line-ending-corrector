@@ -1,7 +1,7 @@
 
 { Readable } = require 'stream'
 
-class CorrectedStream extends Readable
+class __CorrectedStream extends Readable
 
   constructor: (@contentStream, @eolc)->
     super()
@@ -52,7 +52,7 @@ class LineEndingCorrector
       newContent = parts.join '\r'
       return [ (content isnt newContent), newContent ]
 
-  @CorrectedStream: CorrectedStream
+  @__CorrectedStream: __CorrectedStream
 
   @correctSync: (content, optionMap)->
     throw new Error "Expected String" if typeof content isnt 'string'
@@ -69,7 +69,7 @@ class LineEndingCorrector
   
   @correctStream: (contentStream, optionMap)->
     { eolc } = LineEndingCorrector.__extractOptions optionMap
-    return new LineEndingCorrector.CorrectedStream contentStream, eolc
+    return new LineEndingCorrector.__CorrectedStream contentStream, eolc
 
 
     
