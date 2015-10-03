@@ -111,11 +111,91 @@ describe 'LineEndingCorrector', ->
 
       outputStream.on 'end', ->
         contents = fs.readFileSync './test/case-1-input', { encoding:'utf8' }
-        [ _, expectedOutput ] = LineEndingCorrector.__correct contents, 'CRLF'
+        [ _, expectedOutput ] = LineEndingCorrector.__correct contents, 'CRLF', 'utf8'
         expect(outputSummary).to.equal(expectedOutput)
         done()
 
+
+  describe '.correctSync()', ->
+
+    fn = LineEndingCorrector.correctSync
+
+    it 'existance', ->
+
+      expect(LineEndingCorrector).to.have.property('correctSync').that.is.a('function')
+
+    it 'input-output set 1', ->
       
+      input = 'Line1\nLine2'
+      expectedOutput = 'Line1\nLine2'
+      [ wasAltered, output ] = fn input, { eolc: 'LF' }
+      expect(wasAltered).to.equal(false)
+      expect(output).to.equal(expectedOutput)
+      
+    it 'input-output set 2', ->
+      
+      input = 'Line1\nLine2'
+      expectedOutput = 'Line1\nLine2'
+      expect(fn).to.throw(Error, 'Expected String')
+
+
+
+
+  describe '.correct()', ->
+
+    fn = LineEndingCorrector.correct
+
+    it 'existance', ->
+
+      expect(LineEndingCorrector).to.have.property('correct').that.is.a('function')
+
+    it 'input-output set 1', (done)->
+      
+      input = 'Line1\nLine2'
+      expectedOutput = 'Line1\nLine2'
+
+      fn input, null, (err, wasAltered, output)=>
+        expect(err).to.equal(null)
+        expect(wasAltered).to.equal(false)
+        expect(output).to.equal(expectedOutput)
+        done()
+
+    it 'input-output set 2', (done)->
+      
+      input = 'Line1\nLine2'
+      expectedOutput = 'Line1\nLine2'
+
+      fn null, null, (err, wasAltered, output)=>
+        expect(err).to.not.equal(null)
+        expect(err).to.have.property('message').that.equals('Expected String')
+        done()
+
+  describe '.correctStream()', ->
+
+    fn = LineEndingCorrector.correctStream
+
+    it 'existance', ->
+
+      expect(LineEndingCorrector).to.have.property('correctStream').that.is.a('function')
+
+    it 'input-output set 1', (done)->
+
+      inputStream = fs.createReadStream './test/case-1-input', { encoding:'utf8' }
+
+      outputStream = fn inputStream, { eolc: 'CRLF' }
+
+      outputSummary = ''
+
+      outputStream.on 'data', (data)->
+        outputSummary += data
+
+      outputStream.on 'end', ->
+        contents = fs.readFileSync './test/case-1-input', { encoding:'utf8' }
+        [ _, expectedOutput ] = LineEndingCorrector.__correct contents, 'CRLF', 'utf8'
+        expect(outputSummary).to.equal(expectedOutput)
+        done()
+
+
 
 
 
