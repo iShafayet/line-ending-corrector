@@ -138,9 +138,6 @@ describe 'LineEndingCorrector', ->
       expectedOutput = 'Line1\nLine2'
       expect(fn).to.throw(Error, 'Expected String')
 
-
-
-
   describe '.correct()', ->
 
     fn = LineEndingCorrector.correct

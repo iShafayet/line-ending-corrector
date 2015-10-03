@@ -2,9 +2,12 @@
   "name": "line-ending-corrector",
   "version": "0.0.1",
   "description": "Line Ending Corrector - An utility that makes sure your files have consistent line endings.",
-  "main": "index.js",
+  "main": "index-runner.js",
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script/register"
+  },
+  "bin": {
+    "lec": "cmd-runner.js"
   },
   "repository": {
     "type": "git",
@@ -25,10 +28,12 @@
     "url": "https://github.com/iShafayet/line-ending-corrector/issues"
   },
   "homepage": "https://github.com/iShafayet/line-ending-corrector",
+  "dependencies": {
+    "coffee-script": "^1.10.0"
+  },
   "devDependencies": {
     "chai": "^3.3.0",
-    "coffee-script": "^1.10.0",
     "mocha": "^2.3.3"
   },
-  "private": false
+  "private": true
 }
