@@ -3,7 +3,7 @@
 
 class __CorrectedStream extends Readable
 
-  constructor: (@contentStream, @eolc)->
+  constructor: (@contentStream, @eolc, @providedEncoding = 'utf8')->
     super()
 
     hasEneded = false
@@ -13,16 +13,17 @@ class __CorrectedStream extends Readable
       @contentStream.on 'data', (chunk)=>
         unless hasEneded
           [ _, chunk] = LineEndingCorrector.__correct chunk, @eolc
-          @push chunk, 'utf8'
+          @push chunk, @providedEncoding
 
       @contentStream.on 'end', =>
         unless hasEneded
           @push null
         hasEneded = true
 
-    @setEncoding 'utf8'
+    @setEncoding @providedEncoding
 
   _read: (n)=> null
+
 
 class LineEndingCorrector
   
@@ -68,10 +69,8 @@ class LineEndingCorrector
       return cbfn null, wasAltered, output
   
   @correctStream: (contentStream, optionMap)->
-    { eolc } = LineEndingCorrector.__extractOptions optionMap
-    return new LineEndingCorrector.__CorrectedStream contentStream, eolc
-
-
-    
+    { eolc, encoding } = LineEndingCorrector.__extractOptions optionMap
+    return new LineEndingCorrector.__CorrectedStream contentStream, eolc, encoding
 
 @LineEndingCorrector = LineEndingCorrector
+
