@@ -1,36 +1,36 @@
 {
-  "name": "line-ending-corrector",
-  "version": "0.0.3",
-  "description": "Line Ending Corrector - An utility that makes sure your files have consistent line endings.",
-  "main": "index-runner.js",
-  "scripts": {
-    "test": "mocha --compilers coffee:coffee-script/register"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/iShafayet/line-ending-corrector.git"
-  },
-  "keywords": [
-    "Utility",
-    "Line",
-    "Ending",
-    "CRLF",
-    "LF",
-    "Linefeed",
-    "Newline"
-  ],
-  "author": "Sayem Shafayet <ishafayet@gmail.com> (http://ishafayet.me/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/iShafayet/line-ending-corrector/issues"
-  },
-  "homepage": "https://github.com/iShafayet/line-ending-corrector",
-  "dependencies": {
-    "coffee-script": "^1.10.0"
-  },
-  "devDependencies": {
-    "chai": "^3.3.0",
-    "mocha": "^2.3.3"
-  },
-  "private": false
+    "name": "line-ending-corrector",
+    "version": "0.0.4",
+    "description": "Line Ending Corrector - An utility that makes sure your files have consistent line endings.",
+    "main": "index-runner.js",
+    "scripts": {
+        "test": "mocha --compilers coffee:coffee-script/register"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/iShafayet/line-ending-corrector.git"
+    },
+    "keywords": [
+        "Utility",
+        "Line",
+        "Ending",
+        "CRLF",
+        "LF",
+        "Linefeed",
+        "Newline"
+    ],
+    "author": "Sayem Shafayet <ishafayet@gmail.com> (http://ishafayet.me/)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/iShafayet/line-ending-corrector/issues"
+    },
+    "homepage": "https://github.com/iShafayet/line-ending-corrector",
+    "dependencies": {
+        "coffee-script": "^1.10.0"
+    },
+    "devDependencies": {
+        "chai": "^3.3.0",
+        "mocha": "^2.3.3"
+    },
+    "private": false
 }
