@@ -1,6 +1,6 @@
 {
     "name": "line-ending-corrector",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Line Ending Corrector - An utility that makes sure your files have consistent line endings.",
     "main": "index-runner.js",
     "scripts": {
