@@ -8,7 +8,7 @@ You should definitely have this in your build process especially if someone in y
 # Features
 
 * Supports recusive mode for all files in a directory
-* Can be used from the command line using `lec`. [See Here](https://github.com/iShafayet/line-ending-corrector)
+* Can be used from the command line using separate package `lec`. [See Here](https://github.com/iShafayet/lec)
 * Has a gulp module
 * Exposes a programmatic API.
 
